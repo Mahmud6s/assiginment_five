@@ -1,0 +1,1 @@
+Username: mahmud, Email: sm@gmail.com, Password: $2y$10$RhNTjTT4MEW0jeGd8gXCku99C3BMMmI1ByTsZ87HuFxfelE/3sI7u, Role: admin
