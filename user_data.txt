@@ -1,1 +1,3 @@
 Username: mahmud, Email: sm@gmail.com, Password: $2y$10$RhNTjTT4MEW0jeGd8gXCku99C3BMMmI1ByTsZ87HuFxfelE/3sI7u, Role: admin
+Username: cc, Email: cc@gmail.com, Password: $2y$10$3NVVfb1YjZqnyXL4SiJ6w.HA6BdLYLbtwqf9YSvLz/5y7iZxyIfW2, Role: user
+Username: ee, Email: ee@gmail.com, Password: $2y$10$X95pnw.MDqPlP1Dy.2I0q.CHWcW0DdeeTrBljAjGazLCYmxuezz42, Role: user

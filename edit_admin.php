@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_user'])) {
 
     // Perform validation on the new data (you can add more robust validation)
     if (empty($newUsername) || empty($newEmail) || empty($newRole)) {
-        echo "Username, email, and role are required.";
+         echo "Username, email, and role are required.";
     } else {
         updateUser($email, $newUsername, $newEmail, $newRole);
     }
@@ -52,25 +52,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['edit_user'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Edit User</h1>
-    
-    <form method="post">
-        <label for="new_username">New Username:</label>
-        <input type="text" id="new_username" name="new_username">
-        <br>
+<body class="bg-gray-100 p-8 flex justify-center items-center h-screen">
+    <div class="bg-white p-4 rounded shadow-lg w-96">
+        <h1 class="text-2xl font-semibold mb-4">Edit User</h1>
+        <form method="post">
+            <div class="mb-4">
+                <label for="new_username" class="block font-medium text-gray-700">New Username:</label>
+                <input type="text" id="new_username" name="new_username" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
 
-        <label for="new_email">New Email:</label>
-        <input type="email" id="new_email" name="new_email">
-        <br>
+            <div class="mb-4">
+                <label for="new_email" class="block font-medium text-gray-700">New Email:</label>
+                <input type="email" id="new_email" name="new_email" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
 
-        <label for="new_role">New Role:</label>
-        <input type="text" id="new_role" name="new_role">
-        <br>
+            <div class="mb-4">
+                <label for="new_role" class="block font-medium text-gray-700">New Role:</label>
+                <input type="text" id="new_role" name="new_role" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
+            </div>
 
-        <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>">
-        <input type="submit" name="edit_user" value="Save">
-    </form>
+            <input type="hidden" name="email" value="<?php echo $_GET['email']; ?>">
+
+            <button type="submit" name="edit_user" class="w-full bg-blue-500 text-white font-semibold p-2 rounded-lg hover:bg-blue-600">Save</button>
+        </form>
+    </div>
 </body>
 </html>

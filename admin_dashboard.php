@@ -27,49 +27,56 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['delete'])) {
     // Save the updated user data back to the file
     file_put_contents('user_data.txt', implode("\n", $user_data));
 }
-
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard</title>
+    <!-- Include Tailwind CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 </head>
-<body>
-    <h1>Welcome, Admin!</h1>
-    <a href="logout.php">Logout</a>
 
-    <h2>User List</h2>
-    <table>
-        <tr>
-            <th>Username</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Actions</th>
-        </tr>
-        <?php
-        foreach ($user_data as $line) {
-            $data = explode(', ', $line);
-            $username = str_replace('Username: ', '', $data[0]);
-            $email = str_replace('Email: ', '', $data[1]);
-            $role = str_replace('Role: ', '', $data[3]);
+<body class="bg-gray-100 p-8">
+    <div class="max-w-screen-lg mx-auto bg-white p-4 rounded shadow-lg">
+        <h1 class="text-3xl font-semibold mb-4">Welcome, Admin!</h1>
+        <a href="logout.php" class="text-blue-500">Logout</a>
 
-            echo "<tr>
-                    <td>$username</td>
-                    <td>$email</td>
-                    <td>$role</td>
-                    <td>
-                        <a href='edit_admin.php?email=$email'>Edit</a>
-                        <form method='post' style='display: inline;'>
-                            <input type='hidden' name='emailToDelete' value='$email'>
-                            <input type='submit' name='delete' value='Delete' onclick='return confirm(\"Are you sure you want to delete this user?\");'>
+        <h2 class="text-2xl mt-8 mb-4">User List</h2>
+        <table class="w-full border-collapse border border-gray-300">
+            <tr class="bg-gray-200">
+                <th class="p-2">Username</th>
+                <th class="p-2">Email</th>
+                <th class="p-2">Role</th>
+                <th class="p-2">Actions</th>
+            </tr>
+            <?php
+            foreach ($user_data as $line) {
+                $data = explode(', ', $line);
+                $username = str_replace('Username: ', '', $data[0]);
+                $email = str_replace('Email: ', '', $data[1]);
+                $role = str_replace('Role: ', '', $data[3]);
+
+                echo "<tr>
+                          <td class='p-2 text-center'>$username</td>
+                          <td class='p-2 text-center'>$email</td>
+                          <td class='p-2 text-center'>$role</td>
+                          <td class='p-2 text-center'>
+                          <a href='edit_admin.php?email=$email' class='text-blue-500'>Edit</a>
+                          <form method='post' style='display: inline;'>
+                       <input type='hidden' name='emailToDelete' value='$email'>
+                       <button type='submit' name='delete' class='text-red-500 ml-2'
+                                       onclick='return confirm(\"Are you sure you want to delete this user?\");'>Delete</button>
                         </form>
-                    </td>
-                  </tr>";
-        }
-        ?>
-    </table>
+                           </td>
+                     </tr>";
+            }
+                ?>
+        </table>
+    </div>
 </body>
+
 </html>
